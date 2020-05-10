@@ -1,11 +1,15 @@
 <div class="container">
-  <form [formGroup]="apiForm" submit class="api-form" (ngSubmit)="onSend()">
+  <form [formGroup]="apiForm" class="api-form" (ngSubmit)="onSend()">
     <label for="apiInput" class="api-form__label">JSON URL</label>
     <input formControlName="apiInput" type="text" name="apiInput" id="apiInput" class="api-form__text">
     <button type="submit" class="api-form__submit">Submit</button>
   </form>
   <div class="loader" *ngIf="loading">Loading...</div>
   <div class="jsonShow">
-    <app-json-unit [data]="this.apiService.jsonApi | async"></app-json-unit>
+    <ng-container *ngIf="data && utilService.isObject(data)">
+      <app-object [objectData]="data"></app-object>
+    </ng-container>
+    <ng-container *ngIf="data && utilService.isArray(data)">
+    </ng-container>
   </div>
 </div>

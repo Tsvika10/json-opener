@@ -1,0 +1,19 @@
+<div class="u-pad-l" *ngFor="let value of data; let i = index">
+    <div class="line">
+        <span class="entry">{{i}}&nbsp;:&nbsp;</span>
+        <span class="value">
+            <ng-container *ngIf="utilService.isObject(value)">
+                <span>&nbsp;{{'{'}}&nbsp;</span>
+                    <app-object [objectData]="value"></app-object>
+                <span>{{'}'}}&nbsp;</span>
+            </ng-container>
+            <ng-container *ngIf="utilService.isArray(value)">
+                <span>&nbsp;[&nbsp;</span>
+                    <app-array [objectArray]="value" ></app-array>
+                <span>]&nbsp;</span>
+            </ng-container>
+            <ng-container *ngIf="utilService.isNumber(value)">{{(value)}}</ng-container>
+            <ng-container *ngIf="utilService.isString(value)">"{{(value)}}"</ng-container>
+        </span>
+    </div>
+</div>

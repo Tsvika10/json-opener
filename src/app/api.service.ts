@@ -7,16 +7,15 @@ import { Subject } from 'rxjs';
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
-
   jsonApi = new Subject<any>();
 
-  async onSend(v) {
-    try {
-      const jsonApi = await this.http.get(v).toPromise();
-      this.jsonApi.next(jsonApi)
-    } catch (err) {
-      console.log(err)
-    }
+  onSend(apiInput: string) {
+    this.http.get(apiInput).subscribe(data => {this.jsonApi.next(data); });
   }
+
+  constructor(private http: HttpClient) { }
+
+
+  getJsonData = () => this.jsonApi.asObservable();
+
 }
