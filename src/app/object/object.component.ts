@@ -7,6 +7,7 @@ import { UtilitiesService } from '../utilities.service';
   styleUrls: ['./object.component.scss']
 })
 export class ObjectComponent implements OnInit {
+  
   @Input('objectData') data:Object;
 
   constructor(public utilService:UtilitiesService) { }

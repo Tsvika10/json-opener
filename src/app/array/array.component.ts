@@ -8,7 +8,7 @@ import { UtilitiesService } from '../utilities.service';
 })
 export class ArrayComponent implements OnInit {
 
-  @Input('objectArray') data:Object;
+  @Input('arrayData') data:Array<any>;
 
   constructor(public utilService:UtilitiesService) { }
   

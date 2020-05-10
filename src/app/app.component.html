@@ -10,6 +10,7 @@
       <app-object [objectData]="data"></app-object>
     </ng-container>
     <ng-container *ngIf="data && utilService.isArray(data)">
+      <app-array [arrayData]="data"></app-array>
     </ng-container>
   </div>
 </div>
